@@ -1,3 +1,4 @@
+import { setItem } from "@/helpers/presisteneStorage";
 import AuthService from "@/service/auth";
 const state = {
   isLoading: false,
@@ -20,6 +21,7 @@ const actions = {
       AuthService.register(user)
         .then((response) => {
           context.commit("registerSuccess");
+          setItem('token',response.data.user.token)
           resolve(response.data.user);
         })
         .catch((error) => {
