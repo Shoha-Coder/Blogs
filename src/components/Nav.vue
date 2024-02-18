@@ -3,12 +3,12 @@
     <RouterLink :to="{ name: 'home' }"
       class="d-flex align-items-center link-body-emphasis text-decoration-none Logo__container">
       <img src="@/assets/Logo.png" class="Logo" alt="">
-      <span class="fs-4">Shoha_Coder</span>
     </RouterLink>
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-      <template v-if="isLoggedin">
-        <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'home' }">{{ user.username }}
+      <template v-if="isLoggedIn">
+        <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'home' }">{{user.username}}
         </RouterLink>
+        <a href="#" class="me-3 py-2 link-body-emphasis text-decoration-none" @click="logout">Logout</a>
       </template>
       <template v-if="isAnonymus">
         <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'login' }">Login</RouterLink>
@@ -28,10 +28,16 @@ export default {
   computed: {
     ...mapGetters({
       user: gettersTypes.user,
-      isLoggedin: gettersTypes.isLoggedIn,
+      isLoggedIn: gettersTypes.isLoggedIn,
       isAnonymus: gettersTypes.isAnonymus
     }),
   },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      window.location.reload()
+    }
+  }
 };
 
 </script>
