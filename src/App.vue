@@ -11,7 +11,7 @@ import { RouterView } from 'vue-router';
 import Nav from './components/Nav.vue';
 
 export default {
-  components: { Nav, RouterView }
+  components: { Nav, RouterView },
 }
 </script>
 <style lang="scss"></style>
