@@ -6,19 +6,34 @@
       <span class="fs-4">Shoha_Coder</span>
     </RouterLink>
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-      <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'login' }">Login</RouterLink>
-      <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'register' }">Register
-      </RouterLink>
+      <template v-if="isLoggedin">
+        <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'home' }">{{ user.username }}
+        </RouterLink>
+      </template>
+      <template v-if="isAnonymus">
+        <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'login' }">Login</RouterLink>
+        <RouterLink class="me-3 py-2 link-body-emphasis text-decoration-none" :to="{ name: 'register' }">Register
+        </RouterLink>
+      </template>
     </nav>
   </div>
 </template>
 <script>
 import { RouterLink } from 'vue-router';
-
+import { gettersTypes } from "@/modules/types"
+import { mapGetters } from 'vuex';
 export default {
   name: "Nav",
-  components: { RouterLink }
-}
+  components: { RouterLink },
+  computed: {
+    ...mapGetters({
+      user: gettersTypes.user,
+      isLoggedin: gettersTypes.isLoggedIn,
+      isAnonymus: gettersTypes.isAnonymus
+    }),
+  },
+};
+
 </script>
 <style lang="scss" scoped>
 .Logo {

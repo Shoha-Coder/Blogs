@@ -12,6 +12,9 @@ import Nav from './components/Nav.vue';
 
 export default {
   components: { Nav, RouterView },
+  mounted() {
+this.$store.dispatch('getUser')
+  }
 }
 </script>
 <style lang="scss"></style>

@@ -1,6 +1,6 @@
 export const getItem = (key) => {
   try {
-    return JSON.parse(key);
+    return JSON.parse(localStorage.getItem(key));
   } catch (err) {
     console.error("no user Found", err);
     return null
