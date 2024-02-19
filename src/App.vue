@@ -13,7 +13,7 @@ import Nav from './components/Nav.vue';
 export default {
   components: { Nav, RouterView },
   mounted() {
-this.$store.dispatch('getUser')
+    this.$store.dispatch('getUser')
   }
 }
 </script>
