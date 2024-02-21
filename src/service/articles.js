@@ -5,6 +5,9 @@ const ArticleService = {
     },
     articleDetail(slug) {
         return axios.get(`/articles/${slug}`);
+    },
+    createArticle(article) {
+        return axios.post(`/articles/`, {article})
     }
 }
 
