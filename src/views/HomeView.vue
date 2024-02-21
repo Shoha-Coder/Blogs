@@ -1,6 +1,6 @@
 <template>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
-    <Loader class="m-auto mt-5 pt-5" v-if="isLoading" />
+    <Loader class="offset-md-6 mt-5 pt-5" v-if="isLoading" />
     <ArticleCard v-else v-for="article in data" :key="article.id" :article="article" />
   </div>
 </template>

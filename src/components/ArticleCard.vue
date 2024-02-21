@@ -7,12 +7,12 @@
             <rect width="100%" height="100%" fill="#55595c"></rect>
           </svg>
           <div class="card-body">
-          <p class="card-title fw-bold">{{article.title}}</p>
-            <p class="card-text">{{article.body}}</p>
+          <p class="card-title fw-bold">{{article.title.slice(0,40) + "..."}}</p>
+            <p class="card-text">{{article.body.slice(0, 250)}} </p>
             <div class="d-flex justify-content-between align-items-center card-footer">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="navigateHandler">Read Article</button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
               </div>
               <small class="text-body-secondary">{{createdAt}}</small>
             </div>
@@ -31,7 +31,12 @@ export default {
   },
   data() {
     return {
-      createdAt: new Date(this.article.createdAt).toLocaleString('uz')
+      createdAt: new Date(this.article.createdAt).toLocaleDateString('us')
+    }
+  },
+  methods: {
+    navigateHandler() {
+      return this.$router.push(`/article/${this.article.slug}`)
     }
   }
 }
