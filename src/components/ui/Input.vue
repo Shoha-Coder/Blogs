@@ -1,9 +1,9 @@
 <template>
-  <div class="form-floating mb-3">
+  <div class="form-floating mt-3">
     <input
       :type="type"
-      :id="label"
       class="form-control"
+      :id="label"
       :placeholder="label"
       @input="updateInput"
       :value="modelValue"
@@ -28,4 +28,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

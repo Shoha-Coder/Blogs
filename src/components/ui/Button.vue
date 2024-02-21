@@ -1,11 +1,13 @@
 <template>
-    <button class="btn btn-primary w-100 py-2">
-        <slot></slot>
-    </button>
+  <button class="w-100 btn btn-lg btn-primary mt-3">
+    <slot></slot>
+  </button>
 </template>
+
 <script>
 export default {
-    name: 'Button'
-}
+  name: "Button",
+};
 </script>
-<style lang="scss"></style>
+
+<style></style>

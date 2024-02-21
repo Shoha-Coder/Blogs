@@ -1,9 +1,9 @@
 <template>
-  <div class="form-floating mb-3">
+  <div class="form-floating mt-3">
     <textarea
       :type="type"
-      :id="label"
       class="form-control"
+      :id="label"
       :placeholder="label"
       @input="updateInput"
       :value="modelValue"
@@ -30,8 +30,6 @@ export default {
 
 <style lang="scss" scoped>
 .form-floating {
-  textarea {
-    resize: vertical;
-  }
+  resize: vertical;
 }
 </style>

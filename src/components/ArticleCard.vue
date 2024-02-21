@@ -39,6 +39,14 @@
             >
               Delete
             </button>
+            <button
+              type="button"
+              v-if="article.author.username === user.username"
+              class="btn btn-sm btn-outline-primary"
+              @click="navigateEdit"
+            >
+              Edit
+            </button>
           </div>
           <small class="text-body-secondary">{{ createdAt }}</small>
         </div>
@@ -70,6 +78,9 @@ export default {
       return await this.$store
         .dispatch("deleteArticle", this.article.slug).then(() => this.$store.dispatch('articles'))
     },
+    navigateEdit() {
+      this.$router.push(`/article/edit/${this.article.slug}`)
+    }
   },
   computed: {
     ...mapState({

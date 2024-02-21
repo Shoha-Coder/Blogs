@@ -4,6 +4,7 @@ import RegisterViewVue from "@/views/RegisterView.vue";
 import LoginViewVue from "@/views/LoginView.vue";
 import ArticleDetailView from "@/views/ArticleDetailView.vue";
 import CreateArticleView from "@/views/CreateArticleView.vue"
+import ArticleEditView from "@/views/ArticleEditView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,14 +25,19 @@ const router = createRouter({
       component: LoginViewVue,
     },
     {
-      path: '/article/:slug',
-      name: 'article-detail',
-      component: ArticleDetailView
+      path: "/article/:slug",
+      name: "article-detail",
+      component: ArticleDetailView,
     },
     {
-      path: '/article/create',
-      name: 'create-article',
-      component: CreateArticleView
+      path: "/article/create",
+      name: "create-article",
+      component: CreateArticleView,
+    },
+    {
+      path: "/article/edit/:slug",
+      name: "article-edit",
+      component: ArticleEditView,
     }
   ],
 });
