@@ -5,24 +5,38 @@ const state = {
 };
 
 const mutations = {
-  createArticleStart(state) {
+  controlArticleStart(state) {
     state.isLoading = true;
   },
-  createArticleSuccess(state) {
+  controlArticleSuccess(state) {
     state.isLoading = false;
   },
-  createArticleFailure(state) {
+  controlArticleFailure(state) {
     state.isLoading = false;
   },
 };
 
 const actions = {
   createArticle(context, article) {
-    return new Promise((resolve, reject) => {
-      context.commit("createArticleStart");
+    return new Promise((resolve) => {
+      context.commit("controlArticleStart");
       ArticleService.createArticle(article)
-        .then(() => context.commit("createArticleSuccess"))
-        .catch(() => context.commit("createArticleFailure"));
+        .then(() => {
+          context.commit("controlArticleSuccess");
+          resolve();
+        })
+        .catch(() => context.commit("controlArticleFailure"));
+    });
+  },
+  deleteArticle(context, slug) {
+    return new Promise((resolve) => {
+      context.commit("controlArticleStart");
+      ArticleService.deleteArticles(slug)
+        .then(() => {
+          context.commit("controlArticleSuccess");
+          resolve();
+        })
+        .catch(() => context.commit("controlArticleFailure"));
     });
   },
 };

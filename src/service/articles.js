@@ -8,6 +8,9 @@ const ArticleService = {
     },
     createArticle(article) {
         return axios.post(`/articles/`, {article})
+    },
+    deleteArticles(slug) {
+        return axios.delete(`/articles/${slug}`)
     }
 }
 

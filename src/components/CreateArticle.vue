@@ -34,11 +34,22 @@ export default {
         body: this.body,
         tagList: [],
       };
-      this.$store.dispatch("createArticle", article);
-      this.title = "";
-      this.description = "";
-      this.body = "";
-      article.title !== '' && article.description !== '' && article.body !== '' ? this.$router.push({ name: "home" }) : alert('Barcha hususiyatlarni to`ldiring')
+      if (
+        article.title !== "" &&
+        article.description !== "" &&
+        article.body !== ""
+      ) {
+        this.$store
+          .dispatch("createArticle", article)
+          .then(
+            () => (this.title = ""),
+            (this.description = ""),
+            (this.body = "")
+          )
+          .finally(() => this.$router.push({ name: "home" }));
+      } else {
+        alert("Barcha hususiyatlarni to`ldiring");
+      }
     },
   },
   computed: {
